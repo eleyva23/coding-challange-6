@@ -12,23 +12,44 @@ class Employee {
 }
 
 // Example usage:
-const employee1 = new Employee('david', 'fireFighting');
+const employee = new Employee('david', 'fireFighting');
 
 
-console.log(employee1.describe()); //"david works in the fireFighting department."
-//Step 3 Create a SubClass Manger 
-class Manager extends Employee{
-  constructor(name, department, teamSize){
-    super(name, department);
-    this.teamSize= teamSize;
+console.log(employee.describe()); //"david works in the fireFighting department."
+
+//Step 3 Create a SubClass Manger
+
+class Employee {
+  constructor(name, department) {
+    this.name = name;
+    this.department = department;
   }
+
   describe() {
-    // Override the parent's describe method
-    return `${super.describe()} They manage a team of ${this.teamSize} people.`;
+    return `Name: ${this.name}, Department: ${this.department}`;
   }
 }
 
-// Example usage:
-const manager1 = new Manager("Emma Leyva", "Sales", 10);
-console.log(manager1.describe()); // 
-// Step 4 Adding new employees 
+
+class Manager extends Employee {
+  constructor(name, department, teamSize) {
+    super(name, department); 
+    this.teamSize = teamSize;
+  }
+
+  describe() {
+    
+    return `${super.describe()}, Team Size: ${this.teamSize}`;
+  }
+}
+
+// Example Usage:
+const employee1 = new Employee("Emma", "Sales");
+console.log(employee1.describe()); // "Name: Emma, Department: Sales"
+
+
+const manager1 = new Manager("Sophia", "Project Managment", 15);
+console.log(manager1.describe()); // "Name: Sophia, Department: Project managment"
+
+//Step 4 
+
